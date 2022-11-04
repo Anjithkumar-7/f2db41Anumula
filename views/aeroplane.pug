@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  h1= title
+  - let aeroplane=[{aer_class:"First",aer_fare:20000,aer_mem:"1"},{aer_class:"Economy",aer_fare:10000,aer_mem:"2"},{aer_class:"Premium_Economy",aer_fare:5000,aer_mem:"1"}]
+  div(class="container-fluid")
+  div(class="row")
+   each c,indices in aeroplane
+    div(class="col-sm-2" onclick =`buy(${indices})`) #{c.aer_class}, #{c.aer_fare}, #{c.aer_mem}
+   script.
+    function buy(k)
+    {
+      alert(`You purchased Item ${k+1}`)
+    } 
+   
