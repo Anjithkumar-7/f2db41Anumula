@@ -1,0 +1,22 @@
+extends layout 
+ 
+block content 
+  h1= title 
+ 
+  - let aeroplaneid = toShow._id 
+  - let aer_class = toShow.aer_class 
+  - let aer_fare = toShow.aer_fare 
+  - let aer_mem = toShow.aer_mem 
+  div 
+    div.row 
+      div(class='aeroplaneAttr mr-3') Aeroplane ID is: 
+      div #{aeroplaneid} 
+    div.row 
+      div(class='aeroplaneAttr mr-3') Aeroplane class is: 
+      div #{aer_class} 
+    div.row 
+      div(class='aeroplaneAttr mr-3') Aeroplane fare is: 
+      div #{aer_fare} 
+    div.row 
+      div(class='aeroplaneAttr mr-3') Aeroplane capacity is: 
+      div #{aer_mem} 

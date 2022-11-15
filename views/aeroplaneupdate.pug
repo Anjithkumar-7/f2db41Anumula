@@ -1,0 +1,43 @@
+extends layout 
+ 
+block content 
+  h1= title 
+ 
+  - let aeroplaneid = toShow._id 
+  - let aer_class = toShow.aer_class 
+  - let aer_fare = toShow.aer_fare 
+  - let aer_mem = toShow.aer_mem 
+   
+  div.row(class='mb-2') 
+    div.mr-1 ID is 
+    div #{aeroplaneid} 
+  - let actionid = "/resource/aeroplanes/" + aeroplaneid 
+  form(id='AeroplaneForm', action= actionid, method="PUT") 
+    div.form-group 
+        label.aeroplaneAttr(for='aer_class') Aeroplane type 
+        input#aer_class(type='text', name='aer_class', value= aer_class ) 
+    div.form-group 
+        label.aeroplaneAttr(for='aer_fare') Aeroplane fare 
+        input#aer_fare(type='number', name='aer_fare', value= aer_fare ) 
+    div.form-group 
+        label.aeroplaneAttr(for='aer_mem') Aeroplane mem 
+        input#aer_mem(type='text', name='aer_mem', value= aer_mem ) 
+    input(type="submit") 
+ 
+  script. 
+    document.forms['AeroplaneForm'].addEventListener('submit', (event) => { 
+      event.preventDefault(); 
+      // TODO do something here to show user that form is being submitted 
+      fetch(event.target.action, { 
+        method: 'PUT', 
+        body: new URLSearchParams(new FormData(event.target)) // event.target is the form 
+      }).then((resp) => { 
+        return resp.json(); // or resp.text() or whatever the server sends 
+      }).then((body) => { 
+        alert("Update succeded") 
+        // TODO handle body 
+      }).catch((error) => { 
+        // TODO handle error 
+        alert("Update failed " + error ) 
+      }); 
+    }); 
