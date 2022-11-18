@@ -4,12 +4,13 @@ block content
   h1= title
   - let aeroplane=results
   div(class="container-fluid")
-  div(class="row")
-   each c,indices in aeroplane
-    div(class="col-sm-2" onclick =`buy(${indices})`) #{c.aer_class}, #{c.aer_fare}, #{c.aer_mem}
-   script.
-    function buy(k)
+  div(class="row m-1")
+   each c in aeroplane
+    - let destination = `dispatch(\"/aeroplane/update?id=${c._id}\")`
+    div(class="row-sm-2" class="m-1") #{c.aer_class}, #{c.aer_fare}, #{c.aer_mem}
+      button.btn( class="btn-primary ml-1", onclick= destination) Update
+  script.
+    function dispatch(path)
     {
-      alert(`You purchased Item ${k+1}`)
+      window.location.href=path
     } 
-   
