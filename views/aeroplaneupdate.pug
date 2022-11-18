@@ -2,17 +2,19 @@ extends layout
  
 block content 
   h1= title 
- 
-  - let aeroplaneid = toShow._id 
-  - let aer_class = toShow.aer_class 
-  - let aer_fare = toShow.aer_fare 
-  - let aer_mem = toShow.aer_mem 
+  if (toShow == null) 
+    h2 No instance to delete 
+  else
+   - let aeroplaneid = toShow._id 
+   - let aer_class = toShow.aer_class 
+   - let aer_fare = toShow.aer_fare 
+   - let aer_mem = toShow.aer_mem 
    
-  div.row(class='mb-2') 
+   div.row(class='mb-2') 
     div.mr-1 ID is 
     div #{aeroplaneid} 
-  - let actionid = "/resource/aeroplanes/" + aeroplaneid 
-  form(id='AeroplaneForm', action= actionid, method="PUT") 
+   - let actionid = "/resource/aeroplanes/" + aeroplaneid 
+   form(id='AeroplaneForm', action= actionid, method="PUT") 
     div.form-group 
         label.aeroplaneAttr(for='aer_class') Aeroplane type 
         input#aer_class(type='text', name='aer_class', value= aer_class ) 

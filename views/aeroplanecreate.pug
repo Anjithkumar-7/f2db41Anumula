@@ -4,13 +4,13 @@ block content
   h1= title 
  
   form(id='AeroplaneForm', action="/resource/aeroplanes", method="POST") 
-    div.form-group 
+    div.form-group-create
         label.aeroplaneAttr(for='aer_class') Aeroplane Class 
         input#aeroplane_type(type='text', name='aer_class') 
-    div.form-group 
+    div.form-group-create
         label.aeroplaneAttr(for='aer_fare') Aeroplane Fare 
         input#size(type='number', name='aer_fare') 
-    div.form-group 
+    div.form-group-create
         label.aeroplaneAttr(for='aer_mem') Aeroplane Members
         input#cost(type='number', name='aer_mem') 
     input(type="submit") 

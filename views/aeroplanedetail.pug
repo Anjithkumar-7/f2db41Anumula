@@ -2,11 +2,13 @@ extends layout
  
 block content 
   h1= title 
- 
-  - let aeroplaneid = toShow._id 
-  - let aer_class = toShow.aer_class 
-  - let aer_fare = toShow.aer_fare 
-  - let aer_mem = toShow.aer_mem 
+  if (toShow == null) 
+    h2 No instance to detail 
+  else
+   - let aeroplaneid = toShow._id 
+   - let aer_class = toShow.aer_class 
+   - let aer_fare = toShow.aer_fare 
+   - let aer_mem = toShow.aer_mem 
   div 
     div.row 
       div(class='aeroplaneAttr mr-3') Aeroplane ID is: 
