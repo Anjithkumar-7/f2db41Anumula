@@ -28,7 +28,7 @@ passport.use(new LocalStrategy(
   }
   return done(null, user);
   });
-  }))
+  }));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

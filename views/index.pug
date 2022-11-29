@@ -1,17 +1,12 @@
 extends layout
-
-block content
-  h1= title
-  p Welcome to #{title}
-  p Anjith kumar Anumula love watching movies
-  button(type="button", class="btn btn-primary btn-sm" , onclick="doBump()") Press Me for the contents
-  div(id="bump") Bump the count
-  script.
-   var count=0;
-   var bump=1;
-   function doBump(){
-    count+=bump;
-    bump+=1;
-    document.getElementById("bump").innerHTML="Count "+count+" Bump "+bump;
-   }
-  a(href="aeroplane") Aeroplane page
+ 
+block content 
+  if (!user) 
+    a(href="/login") Login 
+    br 
+    a(href="/register") Register 
+  if (user) 
+    p You are currently logged in as #{user.username} 
+    a(href="/aeroplane") Take me to aeroplanes 
+    br 
+    a(href="/logout") Logout
